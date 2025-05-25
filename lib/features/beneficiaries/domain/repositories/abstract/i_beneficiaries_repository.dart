@@ -3,8 +3,7 @@ import 'package:fintech/features/beneficiaries/domain/models/beneficiary_model.d
 abstract class IBeneficiariesRepository {
   Future<List<BeneficiaryModel>> getBeneficiaries();
   Future<void> addBeneficiary({
-    required String name,
-    required String phoneNumber,
+    required final String name,
   });
-  Future<void> removeBeneficiary(String id);
+  Future<void> removeBeneficiary(final int id);
 }

@@ -38,10 +38,7 @@ class UnSupportedLocationError extends CustomError {
 }
 
 class NotFoundError extends CustomError {
-  NotFoundError({required String errorMessage})
-      : super(
-          errorMessage: errorMessage,
-        );
+  NotFoundError({required super.errorMessage});
 }
 
 class BadRequestError extends CustomError {
@@ -49,10 +46,8 @@ class BadRequestError extends CustomError {
   
   BadRequestError({
     required this.validationErrors,
-    required String errorMessage,
-  }) : super(
-          errorMessage: errorMessage,
-        );
+    required super.errorMessage,
+  });
 }
 
 class UnProcessableEntityError extends CustomError {
@@ -60,64 +55,62 @@ class UnProcessableEntityError extends CustomError {
   
   UnProcessableEntityError({
     required this.validationErrors,
-    required String errorMessage,
-  }) : super(
-          errorMessage: errorMessage,
-        );
+    required super.errorMessage,
+  });
 }
 
 class UnAuthorizedError extends CustomError {
-  UnAuthorizedError({String? errorMessage})
+  UnAuthorizedError({final String? errorMessage})
       : super(
           errorMessage: errorMessage ?? 'Oops! It seems you\'re not registered',
         );
 }
 
 class IsNotBiggerThanError extends CustomError {
-  IsNotBiggerThanError({required String fieldName, required num number})
+  IsNotBiggerThanError({required final String fieldName, required final num number})
       : super(
-          errorMessage: "$fieldName should be bigger than $number",
+          errorMessage: '$fieldName should be bigger than $number',
         );
 }
 
 class IsNotSmallerThanError extends CustomError {
-  IsNotSmallerThanError({required String fieldName, required num number})
+  IsNotSmallerThanError({required final String fieldName, required final num number})
       : super(
-          errorMessage: "$fieldName should be smaller than $number",
+          errorMessage: '$fieldName should be smaller than $number',
         );
 }
 
 class IsNotNameError extends CustomError {
-  IsNotNameError({required String fieldName})
+  IsNotNameError({required final String fieldName})
       : super(
-          errorMessage: "$fieldName is not a valid name",
+          errorMessage: '$fieldName is not a valid name',
         );
 }
 
 class IsNotNumberError extends CustomError {
-  IsNotNumberError({required String fieldName})
+  IsNotNumberError({required final String fieldName})
       : super(
-          errorMessage: "$fieldName is not a valid number",
+          errorMessage: '$fieldName is not a valid number',
         );
 }
 
 class EmptyFieldError extends CustomError {
-  EmptyFieldError({required String fieldName})
+  EmptyFieldError({required final String fieldName})
       : super(
-          errorMessage: "$fieldName should not be empty",
+          errorMessage: '$fieldName should not be empty',
         );
 }
 
 class ShorterThanError extends CustomError {
-  ShorterThanError({required String fieldName, required int minLength})
+  ShorterThanError({required final String fieldName, required final int minLength})
       : super(
-          errorMessage: "$fieldName should be with length $minLength",
+          errorMessage: '$fieldName should be with length $minLength',
         );
 }
 
 class IsNotSelectedError extends CustomError {
-  IsNotSelectedError({required String fieldName})
+  IsNotSelectedError({required final String fieldName})
       : super(
-          errorMessage: "Please select $fieldName",
+          errorMessage: 'Please select $fieldName',
         );
 }

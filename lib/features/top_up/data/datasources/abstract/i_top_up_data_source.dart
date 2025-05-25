@@ -1,9 +1,9 @@
-import 'package:fintech/features/top_up/data/entities/top_up_option_entity.dart';
+import 'package:fintech/features/top_up/data/dtos/top_up_dto.dart';
+import 'package:fintech/features/top_up/data/entities/top_up_history_entity.dart';
 
 abstract class ITopUpDataSource {
-  Future<List<TopUpOptionEntity>> getTopUpOptions();
   Future<void> executeTopUp({
-    required TopUpOptionEntity option,
-    required String beneficiaryId,
+    required final TopUpDto topUpDto,
   });
+  Future<List<TopUpHistoryEntity>> getTopUpHistory();
 }

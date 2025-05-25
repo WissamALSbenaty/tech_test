@@ -1,7 +1,6 @@
   import 'package:fintech/core/data/errors/custom_error.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:fintech/core/data/errors/core_errors.dart';
-import 'package:fintech/core/data/errors/custom_error.dart';
 
 part 'api_error.g.dart';
 

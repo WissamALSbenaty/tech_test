@@ -1,9 +1,10 @@
+import 'package:fintech/features/beneficiaries/presentation/bloc/beneficiaries_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fintech/features/beneficiaries/presentation/bloc/beneficiaries_bloc.dart';
 
 class AddBeneficiaryDialog extends StatefulWidget {
-  const AddBeneficiaryDialog({super.key});
+  final void Function(String)onAddBeneficiary;
+  const AddBeneficiaryDialog({super.key, required this.onAddBeneficiary});
 
   @override
   State<AddBeneficiaryDialog> createState() => _AddBeneficiaryDialogState();
@@ -12,17 +13,15 @@ class AddBeneficiaryDialog extends StatefulWidget {
 class _AddBeneficiaryDialogState extends State<AddBeneficiaryDialog> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
-  final _phoneController = TextEditingController();
 
   @override
   void dispose() {
     _nameController.dispose();
-    _phoneController.dispose();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return AlertDialog(
       title: const Text('Add Beneficiary'),
       content: Form(
@@ -32,31 +31,14 @@ class _AddBeneficiaryDialogState extends State<AddBeneficiaryDialog> {
           children: [
             TextFormField(
               controller: _nameController,
+              maxLength: 20,
               decoration: const InputDecoration(
                 labelText: 'Name',
                 hintText: 'Enter beneficiary name',
               ),
-              validator: (value) {
+              validator: (final value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter a name';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _phoneController,
-              decoration: const InputDecoration(
-                labelText: 'Phone Number',
-                hintText: 'Enter UAE phone number',
-              ),
-              keyboardType: TextInputType.phone,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a phone number';
-                }
-                if (!value.startsWith('+971')) {
-                  return 'Phone number must start with +971';
                 }
                 return null;
               },
@@ -72,12 +54,7 @@ class _AddBeneficiaryDialogState extends State<AddBeneficiaryDialog> {
         ElevatedButton(
           onPressed: () {
             if (_formKey.currentState?.validate() ?? false) {
-              context.read<BeneficiariesBloc>().add(
-                    BeneficiariesEvent.addBeneficiary(
-                      name: _nameController.text,
-                      phoneNumber: _phoneController.text,
-                    ),
-                  );
+              widget.onAddBeneficiary( _nameController.text);
               Navigator.of(context).pop();
             }
           },

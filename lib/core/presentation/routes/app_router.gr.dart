@@ -9,51 +9,40 @@
 
 part of 'app_router.dart';
 
-abstract class _$AppRouter extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    BeneficiariesRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const BeneficiariesPage(),
-      );
-    },
-    TopUpRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const TopUpPage(),
-      );
-    },
-  };
-}
-
 /// generated route for
-/// [BeneficiariesPage]
-class BeneficiariesRoute extends PageRouteInfo<void> {
-  const BeneficiariesRoute({List<PageRouteInfo>? children})
+/// [AuthPage]
+class AuthRoute extends PageRouteInfo<void> {
+  const AuthRoute({List<PageRouteInfo>? children})
       : super(
-          BeneficiariesRoute.name,
+          AuthRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'BeneficiariesRoute';
+  static const String name = 'AuthRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AuthPage();
+    },
+  );
 }
 
 /// generated route for
-/// [TopUpPage]
-class TopUpRoute extends PageRouteInfo<void> {
-  const TopUpRoute({List<PageRouteInfo>? children})
+/// [CreateTopUpPage]
+class CreateTopUpRoute extends PageRouteInfo<void> {
+  const CreateTopUpRoute({List<PageRouteInfo>? children})
       : super(
-          TopUpRoute.name,
+          CreateTopUpRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'TopUpRoute';
+  static const String name = 'CreateTopUpRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CreateTopUpPage();
+    },
+  );
 }

@@ -6,18 +6,15 @@ class BeneficiaryListItem extends StatelessWidget {
   final VoidCallback onDelete;
 
   const BeneficiaryListItem({
-    super.key,
-    required this.beneficiary,
-    required this.onDelete,
+    required this.beneficiary, required this.onDelete, super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: ListTile(
         title: Text(beneficiary.name),
-        subtitle: Text(beneficiary.phoneNumber),
         trailing: IconButton(
           icon: const Icon(Icons.delete, color: Colors.red),
           onPressed: onDelete,

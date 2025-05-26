@@ -52,10 +52,12 @@ import '../../features/top_up/domain/repositories/abstract/i_top_up_repository.d
     as _i618;
 import '../../features/top_up/domain/repositories/concrete/top_up_repository_impl.dart'
     as _i474;
+import '../../features/top_up/domain/usecases/execute_top_up.dart' as _i136;
 import '../../features/top_up/domain/usecases/execute_top_up_usecase.dart'
     as _i296;
 import '../../features/top_up/domain/usecases/get_top_up_history_usercase.dart'
     as _i648;
+import '../../features/top_up/domain/usecases/get_top_up_options.dart' as _i344;
 import '../../features/top_up/presentation/bloc/craete_top_up_bloc/create_top_up_cubit.dart'
     as _i67;
 import '../../features/top_up/presentation/bloc/top_up_history_bloc/top_up_history_cubit.dart'
@@ -90,8 +92,8 @@ _i174.GetIt $initGetIt(
   );
   final appRouterModule = _$AppRouterModule();
   final connectivityPackage = _$ConnectivityPackage();
-  gh.singleton<_i591.AppRouter>(() => appRouterModule.getAppRouter);
   gh.singleton<_i197.SnakeBarShower>(() => _i197.SnakeBarShower());
+  gh.singleton<_i591.AppRouter>(() => appRouterModule.getAppRouter);
   gh.singleton<_i895.Connectivity>(() => connectivityPackage.connectivity);
   gh.singleton<_i360.IHttpRequestorModule>(() => _i845.HttpRequestorModule());
   gh.singleton<_i646.IAppLocalDatabase>(() => _i703.AppLocalDatabase());
@@ -129,6 +131,10 @@ _i174.GetIt $initGetIt(
       () => _i296.ExecuteTopUpUseCase(gh<_i618.ITopUpRepository>()));
   gh.lazySingleton<_i648.GetTopUpHistoryUseCase>(
       () => _i648.GetTopUpHistoryUseCase(gh<_i618.ITopUpRepository>()));
+  gh.factory<_i136.ExecuteTopUpUseCase>(
+      () => _i136.ExecuteTopUpUseCase(gh<_i618.ITopUpRepository>()));
+  gh.factory<_i344.GetTopUpOptionsUseCase>(
+      () => _i344.GetTopUpOptionsUseCase(gh<_i618.ITopUpRepository>()));
   gh.lazySingleton<_i594.LoginCubit>(() => _i594.LoginCubit(
         gh<_i188.LoginUseCase>(),
         gh<_i980.AuthBloc>(),
